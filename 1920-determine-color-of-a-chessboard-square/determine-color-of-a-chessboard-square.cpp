@@ -20,7 +20,6 @@ public:
         int col = c[0] -0 -96;
         cout<<"row : "<<row<<endl;
         cout<<"col : "<<col<<endl;
-        // cout<<'a'-0 -96;
         return check(row,col);
     }
 };
