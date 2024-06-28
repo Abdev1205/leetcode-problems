@@ -15,7 +15,7 @@ public:
                 int f=it->second;
                 nums[f]=operations[i][1];
                 // erase the map
-                mp.erase(it);
+                // mp.erase(it);
                 // adding new value
                 mp[operations[i][1]]=f;
 
