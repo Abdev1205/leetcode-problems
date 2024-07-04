@@ -15,10 +15,13 @@ public:
             // now add the last val in front
             ls.push_front(lastVal);
         }
-        vector<int> rotated;
+        // vector<int> rotated;
+        int i=0;
         for(auto l:ls){
-            rotated.push_back(l);
+            nums[i]=l;
+            i++;
+            // rotated.push_back(l);
         }
-        nums = rotated;
+        // nums = rotated;
     }
 };
