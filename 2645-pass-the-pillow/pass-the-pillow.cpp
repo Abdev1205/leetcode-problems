@@ -9,12 +9,10 @@ public:
         }
         else if(trip%2==0){
             // even ho to 
-            cout<<" when even "<< 1 <<" + "<< time%path<<endl;
             return 1 + time%path;
         }
         else if(trip%2!=0){
             // odd ho to
-            cout<<" when odd "<< n <<" - "<< time%path<<endl;
             return n - time%path;
         }
         return -1;
