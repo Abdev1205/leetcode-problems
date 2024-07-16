@@ -63,9 +63,27 @@ public:
 
                 int ans = max(include,exclude);
                 dp[curr][prev+1]=ans;
-                }
+            }
         }
         return dp[0][0];
+    }
+
+    int optimal(vector<int> &nums){
+        vector<int> ans;
+        ans.push_back(nums[0]);
+
+        for(int i=1; i<nums.size(); i++){
+            if(nums[i]>ans.back()){
+                //include
+                ans.push_back(nums[i]);
+            }
+            else{
+                // find index of just bada element
+                int index = lower_bound(ans.begin(), ans.end(), nums[i])-ans.begin();
+                ans[index] = nums[i];
+            }
+        }
+        return ans.size();
     }
  
     int lengthOfLIS(vector<int>& nums) {
@@ -77,6 +95,7 @@ public:
 
         // return solveUsingRecursion(nums,curr,prev);
         // return solveUsingMemo(nums,curr,prev,dp);
-        return solvingUsingTab(nums);
+        // return solvingUsingTab(nums);
+        return optimal(nums);
     }
 };
