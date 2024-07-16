@@ -1,58 +1,60 @@
 class Solution {
 public:
 
-    void getSub(int index, vector<int> &nums, vector<int> &current, vector<vector<int>> &sub,vector<int> &dp){
+    int solveUsingRecursion(vector<int> &arr, int curr, int prev){
         // base case
-        if(index>=nums.size()){
-            // means we are end of the nums
-            sub.push_back(current);
-            return;
+        if(curr>=arr.size()){
+            return 0;
         }
 
-        // include 
-        if(current.empty() || nums[index] > current.back()){
-            current.push_back(nums[index]);
-            getSub(index+1, nums, current, sub,dp);
-            current.pop_back();
+        // include
+        int include = 0;
+        if(prev==-1 || arr[curr] > arr[prev]){
+            include = 1 + solveUsingRecursion(arr, curr+1, curr);
         }
 
-        // exclude
-        getSub(index+1, nums, current, sub,dp);
+        // exclude 
+        int exclude = 0 + solveUsingRecursion(arr, curr+1, prev);
+
+        int ans = max(include,exclude);
+        return ans;
     }
 
-    int lengthOfLIS(vector<int>& nums) {
-        // getting memory limit due to recursive funcation 
-        // so using table appaoach
 
-        // vector<vector<int>> sub;
-        // vector<int> current;
-        vector<int> dp(nums.size()+1 ,1);
-        // getSub(0,nums,current,sub,dp);
-        // cout<<"size of sub "<<sub.size()<<endl;
-        int maxy = INT_MIN;
-        // for(auto s:sub){
-        //     // cout<<"{";
-        //     // for(auto a:s){
-        //     //     cout<<" "<<a;
-        //     // }
-        //     // cout<<" }"<<endl;
-        //     int n = s.size();
-        //     maxy = max(maxy,n);
-        // }
-
-        // tablutaion approach
-        for(int i=0; i<nums.size(); i++){
-            for(int j=0; j<i; j++){
-                if (nums[i] > nums[j]) {
-                    dp[i] = max(dp[i], dp[j] + 1); 
-                }
-            }
-            maxy = max(maxy,dp[i]);
+    int solveUsingMemo(vector<int> &arr, int curr, int prev, vector<vector<int>> &dp){
+        // base case
+        if(curr>=arr.size()){
+            return 0;
         }
 
-        // for(auto d:dp){
-        //     maxy = max(maxy,d);
-        // }
-        return maxy;
+        // checking the value in dp
+        if(dp[curr][prev+1]!=-1){
+            return dp[curr][prev+1];
+        }
+
+        // include
+        int include = 0;
+        if(prev==-1 || arr[curr] > arr[prev]){
+            include = 1 + solveUsingMemo(arr, curr+1, curr,dp);
+        }
+
+        // exclude 
+        int exclude = 0 + solveUsingMemo(arr, curr+1, prev,dp);
+
+        int ans = max(include,exclude);
+        dp[curr][prev+1]=ans;
+
+        return dp[curr][prev+1];
+    }
+ 
+    int lengthOfLIS(vector<int>& nums) {
+        int curr = 0;
+        int prev = -1;
+        int n = nums.size();
+        
+        vector<vector<int>> dp(n+1,vector<int>(n+1,-1));
+
+        // return solveUsingRecursion(nums,curr,prev);
+        return solveUsingMemo(nums,curr,prev,dp);
     }
 };
