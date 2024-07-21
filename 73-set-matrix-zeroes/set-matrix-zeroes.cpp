@@ -20,10 +20,6 @@ public:
             }
         }
      }
-    //  for(auto o:op){
-    //     cout<<o.first<<" : "<<o.second<<endl;
-    //  }
-     // now operation start
      for(auto o:op){
         int row = o.first;
         int col = o.second;
@@ -31,13 +27,11 @@ public:
 
         // row operation
         for(int i=0; i<matrix[row].size(); i++){
-            cout<<"I am updating row where "<<row<<" : "<<col<<" and value = "<<matrix[row][i]<<endl;
             matrix[row][i]=0;
         }
 
         // column opearation
         for(int j=0; j<matrix.size(); j++){
-            cout<<"I am updating col where "<<row<<" : "<<col<<" and value = "<<matrix[j][col]<<endl;
             matrix[j][col]=0;
         }
      }
