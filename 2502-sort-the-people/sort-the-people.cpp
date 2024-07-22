@@ -13,7 +13,7 @@ public:
             p.second=heights[i];
             v.push_back(p);
         }
-        std::sort(v.begin(),v.end(),compare);
+        sort(v.begin(),v.end(),compare);
         vector<string> ans;
         for(int i=0; i<v.size(); i++){
             cout<<v[i].second<<" ";
