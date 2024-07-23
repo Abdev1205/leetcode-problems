@@ -20,6 +20,15 @@ public:
 
     }
 
+    void solveUsingTab(int &maxprofit, int &minCost, vector<int> &prices){
+        for(int i=1; i<prices.size(); i++){
+            int todaysCost = prices[i];
+            int todaysProfit = todaysCost-minCost;
+            maxprofit = max(maxprofit,todaysProfit);
+            minCost = min(minCost,todaysCost);
+        }
+    }
+
     int maxProfit(vector<int>& prices) {
         // Approach 
         // we will go throug the left and maintain the min value 
@@ -28,7 +37,8 @@ public:
         // and same continues
         int maxprofit = 0;
         int minCost = prices[0];
-        solveUsingRecursion(1,maxprofit,minCost,prices);
+        // solveUsingRecursion(1,maxprofit,minCost,prices);
+        solveUsingTab(maxprofit,minCost,prices);
         return maxprofit;
     }
 };
