@@ -8,7 +8,11 @@ public:
 
         unordered_map<int,int> mp;
         for(auto n:nums){
-            mp[n]++;
+            // reducing some of the space
+            if(n<=nums.size()+1){
+                mp[n]++;
+            }
+            
         }
 
         // Now iterate in the range
@@ -19,6 +23,9 @@ public:
                 return i;
             }
         }
+
+        // Now trying to solve in 0(1) space
+
 
 
         return -1;
