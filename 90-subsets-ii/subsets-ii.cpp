@@ -6,7 +6,7 @@ public:
         ans.push_back(curr);
         for(int i=index; i<nums.size(); i++){
             // if we found the same so we have to ignore it
-            if(i!=index && nums[i]==nums[i-1]){
+            if(i!=index && nums[i]==nums[i-1]){ // yahi pe fasa tha i>= nahi i!= hoga 
                 continue;
             }
 
