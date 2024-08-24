@@ -10,13 +10,8 @@ public:
                 for (int k = 0; k < snum.size(); k++) {
                     int temp = snum[k] - '0';
                     sum += temp;
-                    cout << "temp : " << temp;
                 }
-                cout << " sum: " << sum << endl;
                 if (sum % 2 == 0) {
-                    cout << "-----------" << endl;
-                    cout << snum << endl;
-                    cout << "-----------" << endl;
                     counter++;
                 }
             }
