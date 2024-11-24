@@ -11,8 +11,6 @@ public:
                 int l = next[next.size()-1] - '0';
 
                 if(__gcd(f,l)==1){
-                    // cout<<curr<< " : "<<next<<endl;
-                    // cout<<f<<" : "<<l<<endl;
                     ans++;
                 }
             }
