@@ -7,7 +7,6 @@ public:
         int e=len-1;
 
         while(s<=e){
-            // handle s 
             if(!isalnum(str[s])){
                 s++;
                 continue;
@@ -22,9 +21,7 @@ public:
                 e--;
                 continue;
             }
-            else{
-                return false;
-            }
+            return false;
 
         }
         return true;
