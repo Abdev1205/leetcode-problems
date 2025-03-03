@@ -1,36 +1,29 @@
 class Solution {
 public:
     vector<int> pivotArray(vector<int>& nums, int pivot) {
-        // brute force
-        vector<int> less;   
-        vector<int> equal;   
-        vector<int> more;
-        for(auto n:nums){
-            if(n<pivot){
-                less.push_back(n);
-                continue;
+        // Using two pointer approach
+        vector<int> ans(nums.size());
+        int lessy = 0;
+        int morry = nums.size()-1;
+
+        for(int i=0 ,j=nums.size()-1; i<nums.size(); i++, j--){
+            if(nums[i]<pivot){
+                ans[lessy]=nums[i];
+                lessy++;
             }
-            else if(n==pivot){
-                equal.push_back(n);
-                continue;
-            }
-            else{
-                more.push_back(n);
+            if(nums[j]>pivot){
+                ans[morry]=nums[j];
+                morry--;
             }
         }
 
-        // now we will merge that three array in single array
-        vector<int> ans;
-        for(auto n:less){
-            ans.push_back(n);
-        }
-        for(auto n:equal){
-            ans.push_back(n);
-        }
-        for(auto n:more){
-            ans.push_back(n);
+        // adding equal value in array 
+        while(lessy<=morry){
+            ans[lessy] = pivot;
+            lessy++;
         }
 
         return ans;
+
     }
 };
