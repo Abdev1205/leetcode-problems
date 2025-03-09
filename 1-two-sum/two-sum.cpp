@@ -1,15 +1,15 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        unordered_map<int,int> hashMap;
+        unordered_map<int,int> mp;
 
         for(int i=0; i<nums.size(); i++){
             int value = target-nums[i];
-            if(hashMap.find(value)!=hashMap.end()){
-                cout<<hashMap[value];
-                return {hashMap[value],i};
+            if(mp.find(value)!=mp.end()){
+                cout<<mp[value];
+                return {mp[value],i};
             }
-            hashMap[nums[i]]=i;
+            mp[nums[i]]=i;
         }
         return{};
 
