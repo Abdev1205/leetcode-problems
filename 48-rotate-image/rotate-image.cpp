@@ -1,34 +1,47 @@
 class Solution {
 public:
-    void rotate(vector<vector<int>>& mat) {
+
+    void transpose(vector<vector<int>>& mat){
         int n = mat.size();
 
-    // No extra space is needed to solve
-
-    //For transposing the matrix (diagonal remain same just the right half is change)
-
-    // Time complexity = O(N/2 * N/2)
-
-    for(int i=0;i<n-1;i++){
-
-        for(int j=i+1;j<n;j++){
-
-            swap(mat[i][j],mat[j][i]);
-
+        for(int i=0; i<n-1; i++){
+            for(int j=i+1; j<n; j++){
+                swap(mat[i][j],mat[j][i]);
+            }
         }
+    }
+
+    void reverseRow(vector<vector<int>>& mat){
+        int n=mat.size();
+        for(int i=0; i<n; i++){
+            reverse(mat[i].begin(), mat[i].end());
+        }
+    }
+
+    void tryWithBrute(vector<vector<int>>& mat){
+        vector<vector<int>> ans(mat.size(),vector<int>(mat.size()));
+        for(int row=0; row<mat.size(); row++){
+            for(int col=0; col<mat[row].size(); col++){
+                // thourgh pattern we found that first row will be last col 
+                ans[col][(mat.size()-1)-row] = mat[row][col];
+            }
+        }
+        mat=ans;
+    }
+
+    void tryWithOptimal(vector<vector<int>>& mat){
+        // as we can se every row value to seems to be presentr in col but in revere way 
+        // 1. We will create a transpose (swap row with col)
+        // 2. then reverse each row
+
+        transpose(mat);
+        reverseRow(mat);
+
 
     }
 
- 
-
-    //For reversing every row
-
-    // Time complexity = O(N*N/2) 
-
-    for(int i=0;i<n;i++){
-        reverse(mat[i].begin(),mat[i].end());
-    }
-    
-
+    void rotate(vector<vector<int>>& matrix) {
+        // tryWithBrute(matrix);
+        tryWithOptimal(matrix);
     }
 };
