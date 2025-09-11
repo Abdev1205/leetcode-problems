@@ -17,7 +17,6 @@ public:
         for(int i=0; i<str.size(); i++){
             char s = str[i];
             if(isVowel(s)){
-                // cout<<"Adding i "<<i<<" in vector "<<endl;
                 vIndex.push_back(i); 
                 int ascii = s-'0';
                 pair<int,int>p = vowMap[s];
@@ -29,24 +28,13 @@ public:
         }
 
         for(auto v:vowMap){
-            // cout<<v.first<<" -> "<<v.second.first<<" , "<<v.second.second<<endl;
             pair<char,int> p;
             p.first = v.first;
             p.second = v.second.second;
             pVow.push_back(p);
         }
 
-        // cout<<"--------\n";
-
-        // for(int i=0; i<vIndex.size(); i++){
-        //     cout<<vIndex[i]<<endl;
-        // }
-        // cout<<"--------\n";
-
-        // for(int i=0; i<pVow.size(); i++){
-        //     // cout<<pVow[i].first<<" -> "<<pVow[i].second<<endl;
-        // }
-
+        
         int index = 0;
 
         for(int i=0; i<vIndex.size(); i++){
