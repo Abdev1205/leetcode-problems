@@ -1,9 +1,11 @@
 class Solution {
 public:
     bool isVowel(char c) {
-        string vowels = "aeiou";
         c = tolower(c); 
-        return vowels.find(c) != std::string::npos;
+        if(c=='a' || c=='e' || c=='i' || c=='o' || c=='u'){
+            return true;
+        }
+        return false;
     }
 
 
