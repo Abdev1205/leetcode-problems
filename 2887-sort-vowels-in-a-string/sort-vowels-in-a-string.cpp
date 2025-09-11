@@ -29,23 +29,23 @@ public:
         }
 
         for(auto v:vowMap){
-            cout<<v.first<<" -> "<<v.second.first<<" , "<<v.second.second<<endl;
+            // cout<<v.first<<" -> "<<v.second.first<<" , "<<v.second.second<<endl;
             pair<char,int> p;
             p.first = v.first;
             p.second = v.second.second;
             pVow.push_back(p);
         }
 
-        cout<<"--------\n";
+        // cout<<"--------\n";
 
-        for(int i=0; i<vIndex.size(); i++){
-            cout<<vIndex[i]<<endl;
-        }
-        cout<<"--------\n";
+        // for(int i=0; i<vIndex.size(); i++){
+        //     cout<<vIndex[i]<<endl;
+        // }
+        // cout<<"--------\n";
 
-        for(int i=0; i<pVow.size(); i++){
-            cout<<pVow[i].first<<" -> "<<pVow[i].second<<endl;
-        }
+        // for(int i=0; i<pVow.size(); i++){
+        //     // cout<<pVow[i].first<<" -> "<<pVow[i].second<<endl;
+        // }
 
         int index = 0;
 
