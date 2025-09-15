@@ -7,17 +7,10 @@ public:
             int a = c1 - 'A';
             int c2 = hash[a];
 
-            // cout<<"c1 : "<<c1<<endl;
-            // cout<<"a : "<<a<<endl;
-            // cout<<"c2 : "<<c2<<endl;
-
             if(c2==1){
-                // cout<<"broken key found"<<endl;
                 return false;
             }
         }
-        cout<<"True for "<<str<<endl;
-
         return true;
     }
 
@@ -28,11 +21,6 @@ public:
         for(int i=0; i<bls.size(); i++){
             int a = bls[i] - 'A';
             hash[a]=1;
-        }
-
-        for(int i=0; i<hash.size(); i++){
-            char c = 'A' + i;
-            // cout<<c<<" -> "<<hash[i]<<endl;
         }
 
         stringstream ss(text); 
