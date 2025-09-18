@@ -13,10 +13,6 @@ public:
             mp[nums[i]]=ans;
         }
 
-        for(auto m:mp){
-            cout<<m.first<<" -> "<<m.second<<endl;
-        }
-
         // handle same value;
         pair<int,int> maxy = {miny.first,0};
 
@@ -30,9 +26,6 @@ public:
                 }
             }
         }
-
-
-        cout<<"Miny "<<miny.first<<" -> "<<miny.second<<endl;
 
         return maxy.first;
     }
