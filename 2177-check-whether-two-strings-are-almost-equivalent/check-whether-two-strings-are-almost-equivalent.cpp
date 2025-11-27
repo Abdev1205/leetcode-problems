@@ -4,13 +4,11 @@ public:
         vector<int> f1(26,0);
         vector<int> f2(26,0);
 
-        for(auto w:word1){
-            int c1 = w-'a';
+        for(int i=0; i<word1.size(); i++){
+            int c1 = word1[i]-'a';
+            int c2 = word2[i]-'a';
             f1[c1]++;
-        }
-        for(auto w:word2){
-            int c1 = w-'a';
-            f2[c1]++;
+            f2[c2]++;
         }
 
         for(int i=0; i<26; i++){
