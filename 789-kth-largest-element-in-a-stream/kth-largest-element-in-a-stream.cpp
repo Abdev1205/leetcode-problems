@@ -1,30 +1,21 @@
-   //  the TC of the code is O(n*log(k)) for initialization and O(log(k)) for each add() operation.
-   // The space complexity is O(k).
-
 class KthLargest {
 public:
-     
-    priority_queue<int,vector<int>,greater<int>> pq;
-    int sz;
+    priority_queue<int, vector<int>, greater<int>> maxHeap;
+    int size;
     KthLargest(int k, vector<int>& nums) {
-
-         sz = k;
-
-        for(int i=0;i<nums.size();i++){
-            pq.push(nums[i]);
+        size = k;
+        for(auto n:nums){
+            maxHeap.push(n);
         }
-
-       
-        
     }
     
     int add(int val) {
-        
-       pq.push(val);
-        while(pq.size()>sz){
-            pq.pop();
+        maxHeap.push(val);
+        while(maxHeap.size()>size){
+            maxHeap.pop();
         }
-        return pq.top();
+
+        return maxHeap.top();
     }
 };
 
