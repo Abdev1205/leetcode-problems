@@ -1,18 +1,25 @@
 class Solution {
 public:
-    int findMin(vector<int>& arr) {
-        // we need to solve quuestion in logn tc so we are going to use binary search
-        int start=0;
-        int end= arr.size()-1;
-        while(start<end){
-            int mid = start+(end-start)/2;
-            if(arr[mid]>arr[end]){
-                start=mid+1;
+    int findMin(vector<int>& nums) {
+        int start = 0; 
+        int end = nums.size()-1;
+        int mid = start + (end-start)/2;
+        int ans = INT_MAX;
+
+        while(start<=end){
+            if(nums[start]<=nums[mid]){
+                ans = min(ans,nums[start]);
+                start = mid + 1;
             }
             else{
-                end=mid;
+                ans = min(ans,nums[mid]);
+                end = mid-1;
             }
+
+            mid = start + (end-start)/2;
+            
         }
-        return arr[start];
+
+        return ans;
     }
 };
